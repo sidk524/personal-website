@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -10,6 +10,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Siddharth Kambli - Developer Portfolio",
   description: "Full-stack developer with a passion for clean code and modern design",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

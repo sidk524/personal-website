@@ -1,100 +1,120 @@
 "use client";
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const [emailCopied, setEmailCopied] = useState(false);
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Interwoven Color Bands Tapestry */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      <div className="absolute inset-0 pointer-events-none z-0" style={{ height: '100%', minHeight: '200vh' }}>
         {/* Left Edge Dynamic Vibrant Glow */}
-        <div className="absolute top-0 left-[-120px] w-[300px] h-full">
+        <div className="absolute top-0 left-[-80px] w-[100px] md:left-[-120px] md:w-[300px]" style={{ height: '100%' }}>
           {/* Ultra-Vibrant Purple Glow 1 */}
-          <div className="absolute top-[0%] left-0 w-full h-[30%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[60px] animate-glow-flow-left brightness-170 mix-blend-screen"></div>
+          <div className="absolute top-[0%] left-0 w-full h-[30%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[30px] md:blur-[60px] animate-glow-flow-left brightness-110 md:brightness-170 mix-blend-screen"></div>
           
           {/* Electric Blue Glow 1 */}
-          <div className="absolute top-[20%] left-0 w-full h-[25%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/75 via-[#0066ff]/35 to-transparent opacity-100 blur-[55px] animate-cloud-drift-right-fast brightness-140 mix-blend-screen"></div>
+          <div className="absolute top-[20%] left-0 w-full h-[25%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/75 via-[#0066ff]/35 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-cloud-drift-right-fast brightness-110 md:brightness-140 mix-blend-screen"></div>
           
           {/* Electric Purple Glow 2 */}
-          <div className="absolute top-[40%] left-0 w-full h-[20%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[65px] animate-glow-pulse-move brightness-170 mix-blend-screen"></div>
+          <div className="absolute top-[40%] left-0 w-full h-[20%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[32px] md:blur-[65px] animate-glow-pulse-move brightness-110 md:brightness-170 mix-blend-screen"></div>
           
           {/* Azure Blue Glow 2 */}
-          <div className="absolute top-[55%] left-0 w-full h-[25%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/75 via-[#0066ff]/35 to-transparent opacity-100 blur-[58px] animate-wave-diagonal brightness-145 mix-blend-screen"></div>
+          <div className="absolute top-[55%] left-0 w-full h-[25%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/75 via-[#0066ff]/35 to-transparent opacity-100 blur-[28px] md:blur-[58px] animate-wave-diagonal brightness-110 md:brightness-145 mix-blend-screen"></div>
           
           {/* Royal Purple Glow 3 */}
-          <div className="absolute top-[75%] left-0 w-full h-[30%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[62px] animate-cloud-drift-left-fast brightness-170 mix-blend-screen"></div>
+          <div className="absolute top-[75%] left-0 w-full h-[30%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/80 via-[#7000ff]/40 to-transparent opacity-100 blur-[30px] md:blur-[62px] animate-cloud-drift-left-fast brightness-110 md:brightness-170 mix-blend-screen"></div>
+          
+          {/* Extended aurora effects for scroll */}
+          {/* Purple Glow 4 */}
+          <div className="absolute top-[100%] left-0 w-full h-[25%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/70 via-[#7000ff]/30 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-glow-flow-left brightness-110 md:brightness-160 mix-blend-screen"></div>
+          
+          {/* Blue Glow 3 */}
+          <div className="absolute top-[120%] left-0 w-full h-[20%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/65 via-[#0066ff]/25 to-transparent opacity-100 blur-[24px] md:blur-[50px] animate-cloud-drift-right-fast brightness-110 md:brightness-135 mix-blend-screen"></div>
+          
+          {/* Purple Glow 5 */}
+          <div className="absolute top-[135%] left-0 w-full h-[30%] bg-gradient-to-r from-[#7000ff] via-[#7000ff]/75 via-[#7000ff]/35 to-transparent opacity-100 blur-[30px] md:blur-[60px] animate-glow-pulse-move brightness-110 md:brightness-165 mix-blend-screen"></div>
+          
+          {/* Blue Glow 4 */}
+          <div className="absolute top-[160%] left-0 w-full h-[25%] bg-gradient-to-r from-[#0066ff] via-[#0066ff]/70 via-[#0066ff]/30 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-wave-diagonal brightness-110 md:brightness-140 mix-blend-screen"></div>
         </div>
         
         {/* Right Edge Dynamic Vibrant Glow */}
-        <div className="absolute top-0 right-[-120px] w-[300px] h-full">
+        <div className="absolute top-0 right-[-80px] w-[100px] md:right-[-120px] md:w-[300px]" style={{ height: '100%' }}>
           {/* Brilliant Blue Glow 1 */}
-          <div className="absolute top-[0%] right-0 w-full h-[30%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[60px] animate-glow-flow-right brightness-150 mix-blend-screen"></div>
+          <div className="absolute top-[0%] right-0 w-full h-[30%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[30px] md:blur-[60px] animate-glow-flow-right brightness-110 md:brightness-150 mix-blend-screen"></div>
           
           {/* Vivid Purple Glow 1 */}
-          <div className="absolute top-[20%] right-0 w-full h-[25%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/75 via-[#7000ff]/35 to-transparent opacity-100 blur-[55px] animate-cloud-drift-left-fast brightness-170 mix-blend-screen"></div>
+          <div className="absolute top-[20%] right-0 w-full h-[25%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/75 via-[#7000ff]/35 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-cloud-drift-left-fast brightness-110 md:brightness-170 mix-blend-screen"></div>
           
           {/* Sapphire Blue Glow 2 */}
-          <div className="absolute top-[40%] right-0 w-full h-[20%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[65px] animate-glow-pulse-move brightness-160 mix-blend-screen"></div>
+          <div className="absolute top-[40%] right-0 w-full h-[20%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[32px] md:blur-[65px] animate-glow-pulse-move brightness-110 md:brightness-160 mix-blend-screen"></div>
           
           {/* Deep Purple Glow 2 */}
-          <div className="absolute top-[55%] right-0 w-full h-[25%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/75 via-[#7000ff]/35 to-transparent opacity-100 blur-[58px] animate-wave-vertical brightness-170 mix-blend-screen"></div>
+          <div className="absolute top-[55%] right-0 w-full h-[25%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/75 via-[#7000ff]/35 to-transparent opacity-100 blur-[28px] md:blur-[58px] animate-wave-vertical brightness-110 md:brightness-170 mix-blend-screen"></div>
           
           {/* Ocean Blue Glow 3 */}
-          <div className="absolute top-[75%] right-0 w-full h-[30%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[62px] animate-cloud-drift-right-fast brightness-155 mix-blend-screen"></div>
+          <div className="absolute top-[75%] right-0 w-full h-[30%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/80 via-[#0066ff]/40 to-transparent opacity-100 blur-[30px] md:blur-[62px] animate-cloud-drift-right-fast brightness-110 md:brightness-155 mix-blend-screen"></div>
+          
+          {/* Extended aurora effects for scroll */}
+          {/* Blue Glow 4 */}
+          <div className="absolute top-[100%] right-0 w-full h-[25%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/70 via-[#0066ff]/30 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-glow-flow-right brightness-110 md:brightness-150 mix-blend-screen"></div>
+          
+          {/* Purple Glow 4 */}
+          <div className="absolute top-[120%] right-0 w-full h-[20%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/65 via-[#7000ff]/25 to-transparent opacity-100 blur-[24px] md:blur-[50px] animate-cloud-drift-left-fast brightness-110 md:brightness-165 mix-blend-screen"></div>
+          
+          {/* Blue Glow 5 */}
+          <div className="absolute top-[135%] right-0 w-full h-[30%] bg-gradient-to-l from-[#0066ff] via-[#0066ff]/75 via-[#0066ff]/35 to-transparent opacity-100 blur-[30px] md:blur-[60px] animate-glow-pulse-move brightness-110 md:brightness-155 mix-blend-screen"></div>
+          
+          {/* Purple Glow 5 */}
+          <div className="absolute top-[160%] right-0 w-full h-[25%] bg-gradient-to-l from-[#7000ff] via-[#7000ff]/70 via-[#7000ff]/30 to-transparent opacity-100 blur-[28px] md:blur-[55px] animate-wave-vertical brightness-110 md:brightness-170 mix-blend-screen"></div>
         </div>
       </div>
 
       {/* Floating Glassomorphic Navbar */}
       <nav className="fixed top-6 left-6 right-6 z-50">
-        <div className="bg-white/12 backdrop-blur-xl border border-white/20 rounded-full px-20 py-3 shadow-2xl shadow-black/10">
+        <div className="bg-white/12 backdrop-blur-xl border border-white/20 rounded-full px-6 md:px-20 py-3 shadow-2xl shadow-black/10 animate-fade-in">
           <div className="flex justify-between items-center">
             {/* Logo/Name */}
-            <div className="text-gray-900 font-bold text-lg">
+            <Link href="/" className="text-gray-900 font-bold text-lg hover:text-[#5b17d1] transition-colors duration-300">
               SK
-            </div>
+            </Link>
             
             {/* Nav Links */}
-            <div className="flex space-x-12">
-              <a href="#" className="text-gray-700 hover:text-[#5b17d1] transition-colors duration-300 font-medium">
-                Projects
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#5b17d1] transition-colors duration-300 font-medium">
+            <div className="flex space-x-6 md:space-x-12">
+              <Link href="/blog" className="text-gray-700 hover:text-[#5b17d1] transition-colors duration-300 font-medium">
                 Blog
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="flex items-center justify-center min-h-screen px-32 pt-20 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center min-h-screen px-6 md:px-32 pt-20 relative z-10">
+        <div className="max-w-4xl mx-auto w-full animate-slide-up">
+          <div className="flex items-center justify-center md:justify-between flex-col md:flex-row gap-10 md:gap-0">
             {/* Left Side - Content */}
-            <div className="flex-1 pr-8">
+            <div className="flex-1 md:pr-8 text-center md:text-left order-2 md:order-1">
               {/* Main Heading */}
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight text-center md:text-left">
                 Hi, I'm Siddharth Kambli
               </h1>
 
               {/* Subheading */}
-              <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed">
-                I craft beautiful digital experiences and build products that people love. 
-                Full-stack developer with a passion for clean code and modern design.
+              <p className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed text-center md:text-left">
+                I’m a 19-year-old builder studying Computer Science @ Imperial College London. Trying to figure out how the universe works and creating technology that can change it.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-16">
-                <button className="bg-[#5b17d1] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#4a12b0] hover:scale-105 transition-all duration-300 ease-in-out shadow-lg shadow-[#5b17d1]/25 hover:shadow-xl hover:shadow-[#5b17d1]/40">
-                  See My Projects
-                </button>
-                <button className="border-2 border-[#5b17d1] text-[#5b17d1] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#5b17d1] hover:text-white hover:scale-105 transition-all duration-300 ease-in-out">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-4 mb-16">
+                <Link href="/blog" className="border-2 border-[#5b17d1] text-[#5b17d1] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#5b17d1] hover:text-white hover:scale-105 transition-all duration-300 ease-in-out">
                   Read My Blog
-                </button>
+                </Link>
               </div>
 
               {/* Social Icons */}
-              <div className="flex space-x-8">
+              <div className="flex justify-center md:justify-start space-x-5 md:space-x-8">
                 {/* GitHub */}
                 <a href="https://github.com/sidk524" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:text-[#5b17d1] hover:bg-gray-200 hover:scale-110 transition-all duration-300 ease-in-out group">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -159,8 +179,8 @@ export default function Home() {
             </div>
 
             {/* Right Side - Profile Photo */}
-            <div className="flex-shrink-0 ml-4">
-              <div className="w-72 h-72 rounded-full overflow-hidden shadow-2xl shadow-black/10">
+            <div className="flex-shrink-0 ml-0 md:ml-4 order-1 md:order-2">
+              <div className="w-40 h-40 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl shadow-black/10 mb-6 md:mb-0">
                 <img 
                   src="/profile.jpg" 
                   alt="Siddharth Kambli" 
@@ -169,6 +189,86 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* About Me Section */}
+      <div className="relative z-10 py-20 px-6 animate-fade-in" style={{ animationDelay: '120ms' }}>
+        <div className="max-w-4xl mx-auto text-center md:text-left">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              About Me
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#5b17d1] to-[#0066ff] mx-auto mb-8"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <div className="space-y-6">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Hey, I'm Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
+                I love building things and learning as much as I possibly can - especially across disciplines. 
+                Right now, I'm focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
+              </p>
+              
+              <p className="text-lg text-gray-600 leading-relaxed">
+                I also spend time exploring subjects like politics, history, and philosophy - anything that helps me develop my worldview and understand life. 
+                I don't really know where I'm headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
+                So that's what I'm doing: learning, building, reflecting, and trying to become a better human.
+              </p>
+
+            </div>
+
+            {/* Right side - Currently Reading and Currently */}
+            <div className="space-y-8">
+              <div className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                <h3 className="text-xl font-semibold text-gray-900 mb-6">Currently Reading</h3>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <img 
+                      src="/steve_jobs.jpg" 
+                      alt="Steve Jobs Biography" 
+                      className="w-16 h-24 rounded-lg shadow-md object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-lg">Steve Jobs</h4>
+                    <p className="text-sm text-gray-600 mb-2">by Walter Isaacson</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      The exclusive biography of Apple's co-founder, based on extensive interviews and unprecedented access.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Currently</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start">
+                    <span className="text-[#5b17d1] mr-2">•</span>
+                    Studying electromagnetism in physics
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#5b17d1] mr-2">•</span>
+                    Hanging out the bay area
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#5b17d1] mr-2">•</span>
+                    Researching microwave wireless power transmission
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#5b17d1] mr-2">•</span>
+                    Reading lots of books
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#5b17d1] mr-2">•</span>
+                    Figuring out what to do in life
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
