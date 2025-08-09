@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Interwoven Color Bands Tapestry */}
-      <div className="absolute inset-0 pointer-events-none z-0" style={{ height: '100%', minHeight: '200vh' }}>
+      <div className="absolute inset-0 pointer-events-none z-0 hidden md:block motion-safe:block motion-reduce:hidden" style={{ height: '100%', minHeight: '200vh' }}>
         {/* Left Edge Dynamic Vibrant Glow */}
         <div className="absolute top-0 left-[-80px] w-[100px] md:left-[-120px] md:w-[300px]" style={{ height: '100%' }}>
           {/* Ultra-Vibrant Purple Glow 1 */}
@@ -187,6 +187,7 @@ export default function Home() {
                   alt="Siddharth Kambli" 
                   fill
                   priority
+                  sizes="(min-width: 768px) 18rem, 10rem"
                   className="object-cover"
                 />
               </div>

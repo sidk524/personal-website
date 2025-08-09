@@ -32,14 +32,22 @@ function toSlug(name: string) {
   return name.toLowerCase().replace(/\.docx$/i, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+function extensionFromContentType(ct: string) {
+  if (ct.includes('png')) return 'png';
+  if (ct.includes('jpeg') || ct.includes('jpg')) return 'jpg';
+  if (ct.includes('gif')) return 'gif';
+  if (ct.includes('webp')) return 'webp';
+  return 'bin';
+}
+
 function postProcessHtml(html: string): string {
   return html
     // Ensure proper paragraph spacing
     .replace(/<p><\/p>/g, '<p>&nbsp;</p>')
     // Clean up extra whitespace but preserve intentional line breaks
     .replace(/\s+/g, ' ')
-    // Images already have proper dimensions from convertImage, just add spacing and aesthetics
-    .replace(/<img([^>]*?)>/g, '<img$1 style="margin: 1.5rem 0; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">')
+    // Images already have proper dimensions from convertImage, just add spacing, aesthetics, and lazy loading
+    .replace(/<img([^>]*?)>/g, '<img$1 loading="lazy" decoding="async" style="margin: 1.5rem 0; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">')
     // Wrap orphaned list items in ul tags
     .replace(/(<li[^>]*>.*?<\/li>)(?!\s*<\/[ou]l>)/g, '<ul>$1</ul>')
     // Clean up multiple consecutive breaks
@@ -76,22 +84,8 @@ export async function listDocxPosts(): Promise<DocxPostMeta[]> {
         "p[style-name='Subtitle'] => h2:fresh",
         "p[style-name='Caption'] => figcaption:fresh",
       ],
-      convertImage: mammoth.images.imgElement(async image => {
-        const contentType = image.contentType || 'image/png';
-        
-        // Get raw buffer and dimensions
-        const buf: Buffer = await image.read() as Buffer;
-        const dims = sizeOf(buf);
-        const base64 = buf.toString('base64');
-        
-        // Return data URI + explicit size to preserve original dimensions
-        return {
-          src: `data:${contentType};base64,${base64}`,
-          alt: 'Image from document',
-          ...(dims?.width ? { width: dims.width.toString() } : {}),
-          ...(dims?.height ? { height: dims.height.toString() } : {}),
-        };
-      }),
+      // Skip images entirely for metadata listing to avoid base64 conversion
+      convertImage: mammoth.images.none,
     });
 
     const processedHtml = postProcessHtml(html);
@@ -137,6 +131,11 @@ export async function loadDocxPost(slug: string): Promise<DocxPost | null> {
 
     const filePath = path.join(POSTS_DIR, matchingFile);
     const buffer = await fs.readFile(filePath);
+    
+    // Create output directory for images
+    const outDir = path.join(process.cwd(), 'public', 'blog-images', slug);
+    await fs.mkdir(outDir, { recursive: true });
+    let imageIndex = 0;
 
     const { value: html } = await mammoth.convertToHtml({ buffer }, {
       styleMap: [
@@ -166,27 +165,47 @@ export async function loadDocxPost(slug: string): Promise<DocxPost | null> {
         // Get raw buffer and dimensions
         const buf: Buffer = await image.read() as Buffer;
         const dims = sizeOf(buf);
-        const base64 = buf.toString('base64');
+        const ext = extensionFromContentType(contentType);
+        const filename = `image-${imageIndex++}.${ext}`;
         
-        // Return data URI + explicit size to preserve original dimensions
+        // Save image to public directory
+        await fs.writeFile(path.join(outDir, filename), buf);
+        
+        // Return optimized image attributes
         return {
-          src: `data:${contentType};base64,${base64}`,
+          src: `/blog-images/${slug}/${filename}`,
           alt: 'Image from document',
-          ...(dims?.width ? { width: dims.width.toString() } : {}),
-          ...(dims?.height ? { height: dims.height.toString() } : {}),
+          loading: 'lazy',
+          decoding: 'async',
+          ...(dims?.width ? { width: String(dims.width) } : {}),
+          ...(dims?.height ? { height: String(dims.height) } : {}),
         };
       }),
     });
 
     const processedHtml = postProcessHtml(html);
-    const metas = await listDocxPosts();
-    const meta = metas.find(m => m.slug === slug);
-    if (!meta) return null;
-
+    
+    // Compute meta directly without re-listing all posts
+    const stat = await fs.stat(filePath);
+    const date = stat.mtime.toISOString();
     const text = stripTags(processedHtml);
     const wordCount = text.split(/\s+/).filter(Boolean).length;
-
-    return { ...meta, html: processedHtml, wordCount };
+    const readTime = calcReadTime(wordCount);
+    const titleMatch = processedHtml.match(/<h1[^>]*>(.*?)<\/h1>/i);
+    const title = titleMatch ? stripTags(titleMatch[1]) : path.parse(matchingFile).name;
+    const excerptMatch = processedHtml.match(/<p[^>]*>(.*?)<\/p>/i);
+    const excerpt = excerptMatch ? stripTags(excerptMatch[1]) : text.slice(0, 160) + (text.length > 160 ? '…' : '');
+    
+    return {
+      slug,
+      title,
+      date,
+      readTime,
+      excerpt,
+      filename: matchingFile,
+      html: processedHtml,
+      wordCount,
+    };
   } catch (error) {
     console.error('Error loading DOCX post:', error);
     return null;
@@ -194,6 +213,8 @@ export async function loadDocxPost(slug: string): Promise<DocxPost | null> {
 }
 
 export async function allSlugs(): Promise<string[]> {
-  const posts = await listDocxPosts();
-  return posts.map(p => p.slug);
+  const files = await fs.readdir(POSTS_DIR);
+  return files
+    .filter(f => f.toLowerCase().endsWith('.docx') && !f.startsWith('~$'))
+    .map(f => toSlug(f));
 }

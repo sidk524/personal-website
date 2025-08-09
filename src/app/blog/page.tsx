@@ -1,16 +1,15 @@
 import Link from 'next/link';
 import { listDocxPosts } from '@/lib/docx';
 
-// Force dynamic rendering to always fetch fresh content
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Incremental Static Regeneration (rebuild at most hourly)
+export const revalidate = 3600;
 
 export default async function Blog() {
   const posts = await listDocxPosts();
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Aurora Background Effects */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      <div className="fixed inset-0 pointer-events-none z-0 hidden md:block motion-safe:block motion-reduce:hidden">
         {/* Left Edge Dynamic Vibrant Glow */}
         <div className="absolute top-0 left-[-80px] w-[100px] md:left-[-120px] md:w-[300px] h-full">
           {/* Ultra-Vibrant Purple Glow 1 */}
