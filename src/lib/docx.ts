@@ -84,11 +84,14 @@ export async function listDocxPosts(): Promise<DocxPostMeta[]> {
         "p[style-name='Subtitle'] => h2:fresh",
         "p[style-name='Caption'] => figcaption:fresh",
       ],
-      // Skip images entirely for metadata listing to avoid base64 conversion
-      convertImage: mammoth.images.none,
+      // Skip image decoding for metadata listing by returning a minimal placeholder
+      // This avoids reading image buffers and prevents base64 inlining
+      convertImage: mammoth.images.imgElement(async () => ({ src: '' })),
     });
 
-    const processedHtml = postProcessHtml(html);
+    // Ensure no <img> tags leak into the HTML used for excerpts/word counts
+    const htmlWithoutImages = html.replace(/<img[^>]*>/g, '');
+    const processedHtml = postProcessHtml(htmlWithoutImages);
     const text = stripTags(processedHtml);
       const wordCount = text.split(/\s+/).filter(Boolean).length;
       const readTime = calcReadTime(wordCount);
