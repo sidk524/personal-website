@@ -230,18 +230,18 @@ export default function Home() {
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <Image 
-                      src="/steve_jobs.jpg" 
-                      alt="Steve Jobs Biography" 
+                      src="/dune.jpg" 
+                      alt="Dune" 
                       width={64}
                       height={96}
                       className="rounded-lg shadow-md object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Steve Jobs</h4>
-                    <p className="text-sm text-gray-600 mb-2">by Walter Isaacson</p>
+                    <h4 className="font-semibold text-gray-900 text-lg">Dune</h4>
+                    <p className="text-sm text-gray-600 mb-2">by Frank Herbert</p>
                     <p className="text-xs text-gray-500 leading-relaxed">
-                      The exclusive biography of Apple&apos;s co-founder, based on extensive interviews and unprecedented access.
+                      Epic science fiction about power, ecology, and fate.
                     </p>
                   </div>
                 </div>
@@ -252,19 +252,15 @@ export default function Home() {
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start">
                     <span className="text-[#5b17d1] mr-2">•</span>
-                    Studying electromagnetism in physics
+                    Studying classical mechanics in physics
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#5b17d1] mr-2">•</span>
-                    Hanging out the bay area
+                    Reading
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#5b17d1] mr-2">•</span>
-                    Researching microwave wireless power transmission
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#5b17d1] mr-2">•</span>
-                    Reading lots of books
+                    Cutting in the gym (fr this time)
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#5b17d1] mr-2">•</span>
