@@ -237,10 +237,34 @@ export async function loadDocxPost(slug: string): Promise<DocxPost | null> {
       ['loadDocxPost', slug, versionKey],
       { revalidate: false, tags: [`post:${slug}`] }
     );
-    return await runner();
+    const cached = await runner();
+    if (!cached) return null;
+
+    // Ensure referenced image files exist; if any missing, regenerate fresh
+    const imagesOk = await ensurePostImagesExist(slug, cached.html);
+    if (imagesOk) return cached;
+
+    const fresh = await loadDocxPostRaw(slug);
+    return fresh;
   } catch (error) {
     console.error('Error loading DOCX post:', error);
     return null;
+  }
+}
+
+async function ensurePostImagesExist(slug: string, html: string): Promise<boolean> {
+  try {
+    const imgSrcs = Array.from(html.matchAll(/<img[^>]*src=["']([^"']+)["'][^>]*>/gi)).map(m => m[1]);
+    const relevant = imgSrcs.filter(src => src.startsWith(`/blog-images/${slug}/`));
+    if (relevant.length === 0) return true;
+    const checks = await Promise.all(relevant.map(async (src) => {
+      const rel = src.replace(/^\//, '');
+      const p = path.join(process.cwd(), rel);
+      try { await fs.access(p); return true; } catch { return false; }
+    }));
+    return checks.every(Boolean);
+  } catch {
+    return false;
   }
 }
 
