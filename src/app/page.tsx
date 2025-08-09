@@ -227,7 +227,7 @@ export default function Home() {
               </p>
 
             </div>
-
+ 
             {/* Right side - Currently Reading and Currently */}
             <div className="space-y-6">
               <div className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
