@@ -33,6 +33,16 @@ function toSlug(name: string) {
   return name.toLowerCase().replace(/\.docx$/i, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+function overrideDateIfNeeded(filename: string, fallbackIso: string): string {
+  // Hard-set date for the first blog post
+  // Matches regardless of case
+  const lower = filename.toLowerCase();
+  if (lower === 'why i left my startup to return to college.docx') {
+    return new Date('2025-08-09T00:00:00Z').toISOString();
+  }
+  return fallbackIso;
+}
+
 function extensionFromContentType(ct: string) {
   if (ct.includes('png')) return 'png';
   if (ct.includes('jpeg') || ct.includes('jpg')) return 'jpg';
@@ -98,7 +108,7 @@ async function listDocxPostsRaw(docxFiles: string[]): Promise<DocxPostMeta[]> {
     const excerpt = excerptMatch ? stripTags(excerptMatch[1]) : text.slice(0, 160) + (text.length > 160 ? '…' : '');
 
     const stat = await fs.stat(filePath);
-    const date = stat.mtime.toISOString();
+    const date = overrideDateIfNeeded(filename, stat.mtime.toISOString());
 
     metas.push({
       slug: toSlug(filename),
@@ -192,7 +202,7 @@ async function loadDocxPostRaw(slug: string): Promise<DocxPost | null> {
 
   const processedHtml = postProcessHtml(html);
   const stat = await fs.stat(filePath);
-  const date = stat.mtime.toISOString();
+  const date = overrideDateIfNeeded(matchingFile, stat.mtime.toISOString());
   const text = stripTags(processedHtml);
   const wordCount = text.split(/\s+/).filter(Boolean).length;
   const readTime = calcReadTime(wordCount);
