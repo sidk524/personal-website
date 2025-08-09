@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -98,7 +99,7 @@ export default function Home() {
             <div className="flex-1 md:pr-8 text-center md:text-left order-2 md:order-1">
               {/* Main Heading */}
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight text-center md:text-left">
-                Hi, I'm Siddharth Kambli
+                Hi, I&apos;m Siddharth Kambli
               </h1>
 
               {/* Subheading */}
@@ -180,11 +181,13 @@ export default function Home() {
 
             {/* Right Side - Profile Photo */}
             <div className="flex-shrink-0 ml-0 md:ml-4 order-1 md:order-2">
-              <div className="w-40 h-40 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl shadow-black/10 mb-6 md:mb-0">
-                <img 
+              <div className="w-40 h-40 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl shadow-black/10 mb-6 md:mb-0 relative">
+                <Image 
                   src="/profile.jpg" 
                   alt="Siddharth Kambli" 
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -206,15 +209,15 @@ export default function Home() {
             {/* Left side - Text content */}
             <div className="space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed">
-                Hey, I'm Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
+                Hey, I&apos;m Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
                 I love building things and learning as much as I possibly can - especially across disciplines. 
-                Right now, I'm focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
+                Right now, I&apos;m focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
               </p>
               
               <p className="text-lg text-gray-600 leading-relaxed">
                 I also spend time exploring subjects like politics, history, and philosophy - anything that helps me develop my worldview and understand life. 
-                I don't really know where I'm headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
-                So that's what I'm doing: learning, building, reflecting, and trying to become a better human.
+                I don&apos;t really know where I&apos;m headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
+                So that&apos;s what I&apos;m doing: learning, building, reflecting, and trying to become a better human.
               </p>
 
             </div>
@@ -225,17 +228,19 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">Currently Reading</h3>
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <img 
+                    <Image 
                       src="/steve_jobs.jpg" 
                       alt="Steve Jobs Biography" 
-                      className="w-16 h-24 rounded-lg shadow-md object-cover"
+                      width={64}
+                      height={96}
+                      className="rounded-lg shadow-md object-cover"
                     />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 text-lg">Steve Jobs</h4>
                     <p className="text-sm text-gray-600 mb-2">by Walter Isaacson</p>
                     <p className="text-xs text-gray-500 leading-relaxed">
-                      The exclusive biography of Apple's co-founder, based on extensive interviews and unprecedented access.
+                      The exclusive biography of Apple&apos;s co-founder, based on extensive interviews and unprecedented access.
                     </p>
                   </div>
                 </div>

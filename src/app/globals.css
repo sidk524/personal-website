@@ -1,3 +1,116 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* DOCX content formatting */
+.docx-content {
+  /* Preserve natural spacing without breaking layout */
+  white-space: normal;
+  line-height: 1.7;
+}
+
+.docx-content p {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.docx-content p:empty {
+  margin-bottom: 1rem;
+  min-height: 1.2em;
+}
+
+.docx-content strong {
+  font-weight: 600;
+}
+
+.docx-content em {
+  font-style: italic;
+}
+
+.docx-content u {
+  text-decoration: underline;
+}
+
+.docx-content blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+.docx-content img {
+  /* Let images use their explicit width/height from Word document */
+  /* Remove max-width to preserve original dimensions */
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.docx-content h1,
+.docx-content h2,
+.docx-content h3,
+.docx-content h4,
+.docx-content h5,
+.docx-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.docx-content h1 {
+  font-size: 2.25rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.docx-content h2 {
+  font-size: 1.875rem;
+}
+
+.docx-content h3 {
+  font-size: 1.5rem;
+}
+
+.docx-content h4 {
+  font-size: 1.25rem;
+}
+
+.docx-content h5 {
+  font-size: 1.125rem;
+}
+
+.docx-content h6 {
+  font-size: 1rem;
+}
+
+/* Lists from Word */
+.docx-content ul,
+.docx-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.docx-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Tables from Word */
+.docx-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+}
+
+.docx-content th,
+.docx-content td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.docx-content th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}

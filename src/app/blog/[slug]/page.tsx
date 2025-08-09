@@ -1,214 +1,19 @@
-"use client";
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { allSlugs, loadDocxPost } from '@/lib/docx';
 
-// Sample blog posts data - you can replace this with actual blog posts later
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js and TypeScript",
-    excerpt: "Learn how to set up a modern web application using Next.js with TypeScript for better development experience and type safety.",
-    content: `
-# Getting Started with Next.js and TypeScript
+// Force dynamic rendering to always fetch fresh content from DOCX files
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-Next.js has become one of the most popular React frameworks for building modern web applications. When combined with TypeScript, it provides an excellent developer experience with static type checking and improved code quality.
-
-## Why Choose Next.js?
-
-Next.js offers several advantages:
-
-- **Server-side rendering (SSR)** for better SEO and performance
-- **Static site generation (SSG)** for blazing-fast websites
-- **API routes** to build full-stack applications
-- **Automatic code splitting** for optimal performance
-- **Built-in CSS support** including CSS Modules and Sass
-
-## Setting Up Your Project
-
-To get started with a new Next.js project with TypeScript:
-
-\`\`\`bash
-npx create-next-app@latest my-app --typescript
-cd my-app
-npm run dev
-\`\`\`
-
-This command creates a new Next.js project with TypeScript already configured.
-
-## TypeScript Benefits
-
-TypeScript brings several benefits to your Next.js project:
-
-1. **Static type checking** catches errors at compile time
-2. **Better IDE support** with autocompletion and refactoring
-3. **Self-documenting code** with type annotations
-4. **Easier refactoring** as your project grows
-
-## Conclusion
-
-Next.js with TypeScript is a powerful combination for building modern web applications. The setup is straightforward, and the benefits are immediate.
-
-Happy coding!
-    `,
-    date: "2024-01-15",
-    readTime: "5 min read",
-    slug: "getting-started-nextjs-typescript"
-  },
-  {
-    id: 2,
-    title: "Building Beautiful UIs with Tailwind CSS",
-    excerpt: "Discover the power of utility-first CSS framework and how to create stunning, responsive designs with Tailwind CSS.",
-    content: `
-# Building Beautiful UIs with Tailwind CSS
-
-Tailwind CSS has revolutionized how we approach styling in web development. This utility-first CSS framework provides low-level utility classes to build custom designs without writing CSS.
-
-## What is Tailwind CSS?
-
-Tailwind CSS is a utility-first CSS framework packed with classes like \`flex\`, \`pt-4\`, \`text-center\`, and \`rotate-90\` that can be composed to build any design, directly in your markup.
-
-## Key Benefits
-
-- **Rapid development** with pre-built utilities
-- **Consistent design** with design tokens
-- **Responsive design** made easy
-- **Small bundle size** with purging unused CSS
-
-## Getting Started
-
-Install Tailwind CSS in your project:
-
-\`\`\`bash
-npm install -D tailwindcss
-npx tailwindcss init
-\`\`\`
-
-Configure your template paths in \`tailwind.config.js\`:
-
-\`\`\`javascript
-module.exports = {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-\`\`\`
-
-## Example Component
-
-Here's a simple card component built with Tailwind:
-
-\`\`\`jsx
-function Card() {
-  return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </p>
-      </div>
-    </div>
-  )
-}
-\`\`\`
-
-## Conclusion
-
-Tailwind CSS empowers developers to build beautiful, responsive interfaces quickly and efficiently. Give it a try in your next project!
-    `,
-    date: "2024-01-20",
-    readTime: "7 min read",
-    slug: "beautiful-uis-tailwind-css"
-  },
-  {
-    id: 3,
-    title: "Modern JavaScript: ES6+ Features You Should Know",
-    excerpt: "Explore the latest JavaScript features that will make your code more readable, maintainable, and efficient.",
-    content: `
-# Modern JavaScript: ES6+ Features You Should Know
-
-JavaScript has evolved significantly since ES6 (ES2015). Let's explore some of the most important features that every modern JavaScript developer should know.
-
-## Arrow Functions
-
-Arrow functions provide a more concise syntax for writing functions:
-
-\`\`\`javascript
-// Traditional function
-function add(a, b) {
-  return a + b;
+export async function generateStaticParams() {
+  const slugs = await allSlugs();
+  return slugs.map(slug => ({ slug }));
 }
 
-// Arrow function
-const add = (a, b) => a + b;
-\`\`\`
-
-## Destructuring
-
-Destructuring allows you to extract values from arrays and objects:
-
-\`\`\`javascript
-// Array destructuring
-const [first, second] = [1, 2, 3];
-
-// Object destructuring
-const { name, age } = { name: 'John', age: 30 };
-\`\`\`
-
-## Template Literals
-
-Template literals make string interpolation easier:
-
-\`\`\`javascript
-const name = 'World';
-const greeting = \`Hello, \${name}!\`;
-\`\`\`
-
-## Async/Await
-
-Async/await makes working with promises more readable:
-
-\`\`\`javascript
-async function fetchData() {
-  try {
-    const response = await fetch('/api/data');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-\`\`\`
-
-## Spread Operator
-
-The spread operator is useful for arrays and objects:
-
-\`\`\`javascript
-// Array spread
-const arr1 = [1, 2, 3];
-const arr2 = [...arr1, 4, 5];
-
-// Object spread
-const obj1 = { a: 1, b: 2 };
-const obj2 = { ...obj1, c: 3 };
-\`\`\`
-
-## Conclusion
-
-These ES6+ features make JavaScript more powerful and enjoyable to write. Start incorporating them into your code today!
-    `,
-    date: "2024-01-25",
-    readTime: "8 min read",
-    slug: "modern-javascript-es6-features"
-  }
-];
-
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(post => post.slug === params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await loadDocxPost(slug);
 
   if (!post) {
     notFound();
@@ -309,10 +114,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           {/* Post Content */}
           <article className="prose prose-base md:prose-lg prose-gray max-w-none">
             <div 
-              className="blog-content"
-              dangerouslySetInnerHTML={{ 
-                __html: post.content.replace(/\n/g, '<br/>').replace(/```(\w+)?\n([\s\S]*?)\n```/g, '<pre><code>$2</code></pre>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/^# (.*$)/gim, '<h1>$1</h1>').replace(/^## (.*$)/gim, '<h2>$1</h2>').replace(/^### (.*$)/gim, '<h3>$1</h3>').replace(/^\- (.*$)/gim, '<li>$1</li>').replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
-              }}
+              className="blog-content docx-content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
             />
           </article>
 

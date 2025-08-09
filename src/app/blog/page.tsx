@@ -1,35 +1,12 @@
-"use client";
 import Link from 'next/link';
+import { listDocxPosts } from '@/lib/docx';
 
-// Sample blog posts data - you can replace this with actual blog posts later
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js and TypeScript",
-    excerpt: "Learn how to set up a modern web application using Next.js with TypeScript for better development experience and type safety.",
-    date: "2024-01-15",
-    readTime: "5 min read",
-    slug: "getting-started-nextjs-typescript"
-  },
-  {
-    id: 2,
-    title: "Building Beautiful UIs with Tailwind CSS",
-    excerpt: "Discover the power of utility-first CSS framework and how to create stunning, responsive designs with Tailwind CSS.",
-    date: "2024-01-20",
-    readTime: "7 min read",
-    slug: "beautiful-uis-tailwind-css"
-  },
-  {
-    id: 3,
-    title: "Modern JavaScript: ES6+ Features You Should Know",
-    excerpt: "Explore the latest JavaScript features that will make your code more readable, maintainable, and efficient.",
-    date: "2024-01-25",
-    readTime: "8 min read",
-    slug: "modern-javascript-es6-features"
-  }
-];
+// Force dynamic rendering to always fetch fresh content
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-export default function Blog() {
+export default async function Blog() {
+  const posts = await listDocxPosts();
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Aurora Background Effects */}
@@ -99,15 +76,15 @@ export default function Blog() {
               My Blog
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Thoughts, tutorials, and insights about web development, technology, and building great products.
+              Thoughts on life and anything I find interesting
             </p>
           </div>
 
           {/* Blog Posts Grid */}
           <div className="space-y-8">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <article 
-                key={post.id}
+                key={post.slug}
                 className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] group"
               >
                 <Link href={`/blog/${post.slug}`}>
