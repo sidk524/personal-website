@@ -114,6 +114,11 @@ export default function Home() {
                 </Link>
               </div>
 
+              {/* Get in contact heading */}
+              <h3 className="text-sm uppercase tracking-wide text-gray-500 mb-3 text-center md:text-left">
+                Get in contact
+              </h3>
+
               {/* Social Icons */}
               <div className="flex justify-center md:justify-start space-x-5 md:space-x-8">
                 {/* GitHub */}
@@ -208,7 +213,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
-            <div className="space-y-6">
+            <div className="space-y-3">
               <p className="text-lg text-gray-600 leading-relaxed">
                 Hey, I&apos;m Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
                 I love building things and learning as much as I possibly can - especially across disciplines. 
@@ -224,25 +229,45 @@ export default function Home() {
             </div>
 
             {/* Right side - Currently Reading and Currently */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">Currently Reading</h3>
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <Image 
-                      src="/dune.jpg" 
-                      alt="Dune" 
-                      width={64}
-                      height={96}
-                      className="rounded-lg shadow-md object-cover"
-                    />
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <Image 
+                        src="/dune.jpg" 
+                        alt="Dune" 
+                        width={64}
+                        height={96}
+                        className="rounded-lg shadow-md object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 text-lg">Dune</h4>
+                      <p className="text-sm text-gray-600 mb-2">by Frank Herbert</p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Epic science fiction about power, ecology, and fate.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Dune</h4>
-                    <p className="text-sm text-gray-600 mb-2">by Frank Herbert</p>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      Epic science fiction about power, ecology, and fate.
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <Image 
+                        src="/steve_jobs.jpg" 
+                        alt="Steve Jobs Biography" 
+                        width={64}
+                        height={96}
+                        className="rounded-lg shadow-md object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 text-lg">Steve Jobs</h4>
+                      <p className="text-sm text-gray-600 mb-2">by Walter Isaacson</p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        The exclusive biography of Apple&apos;s co-founder, based on extensive interviews and unprecedented access.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
