@@ -155,10 +155,7 @@ async function loadDocxPostRaw(slug: string): Promise<DocxPost | null> {
   const filePath = path.join(POSTS_DIR, matchingFile);
   const buffer = await fs.readFile(filePath);
 
-  // Create output directory for images
-  const outDir = path.join(process.cwd(), 'public', 'blog-images', slug);
-  await fs.mkdir(outDir, { recursive: true });
-  let imageIndex = 0;
+  // We embed images directly as data URIs to guarantee availability across hosts
 
   const { value: html } = await mammoth.convertToHtml({ buffer }, {
     styleMap: [
@@ -186,11 +183,9 @@ async function loadDocxPostRaw(slug: string): Promise<DocxPost | null> {
       const contentType = image.contentType || 'image/png';
       const buf: Buffer = await image.read() as Buffer;
       const dims = sizeOf(buf);
-      const ext = extensionFromContentType(contentType);
-      const filename = `image-${imageIndex++}.${ext}`;
-      await fs.writeFile(path.join(outDir, filename), buf);
+      const base64 = buf.toString('base64');
       return {
-        src: `/blog-images/${slug}/${filename}`,
+        src: `data:${contentType};base64,${base64}`,
         alt: 'Image from document',
         loading: 'lazy',
         decoding: 'async',
