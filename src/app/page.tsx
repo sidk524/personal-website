@@ -116,7 +116,7 @@ export default function Home() {
 
               {/* Get in contact heading */}
               <h3 className="text-sm uppercase tracking-wide text-gray-500 mb-3 text-center md:text-left">
-                Get in contact
+                Message me!
               </h3>
 
               {/* Social Icons */}
