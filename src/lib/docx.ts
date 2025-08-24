@@ -47,13 +47,7 @@ function overrideDateIfNeeded(filename: string, fallbackIso: string): string {
   return fallbackIso;
 }
 
-function extensionFromContentType(ct: string) {
-  if (ct.includes('png')) return 'png';
-  if (ct.includes('jpeg') || ct.includes('jpg')) return 'jpg';
-  if (ct.includes('gif')) return 'gif';
-  if (ct.includes('webp')) return 'webp';
-  return 'bin';
-}
+// removed unused extensionFromContentType
 
 function postProcessHtml(html: string): string {
   return html

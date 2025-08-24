@@ -19,14 +19,14 @@ export default function Home() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">About</h2>
             <div className="space-y-3 text-gray-700 leading-relaxed text-sm">
               <p>
-                Hey, I'm Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
+                Hey, I&#39;m Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
                 I love building things and learning as much as I possibly can - especially across disciplines. 
-                Right now, I'm focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
+                Right now, I&#39;m focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
               </p>
               <p>
                 I also spend time exploring subjects like politics, history, and philosophy - anything that helps me develop my worldview and understand life. 
-                I don't really know where I'm headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
-                So that's what I'm doing: learning, building, reflecting, and trying to become a better human.
+                I don&#39;t really know where I&#39;m headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
+                So that&#39;s what I&#39;m doing: learning, building, reflecting, and trying to become a better human.
               </p>
             </div>
           </section>
