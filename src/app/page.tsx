@@ -80,12 +80,11 @@ export default function Home() {
               </div>
             </div>
           </section>
-
           {/* Currently */}
           <section>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
-              <li>• Studying classical mechanics in physics</li>
+              <li>• Studying some calculus and physics</li>
               <li>• Reading</li>
               <li>• Cutting in the gym (fr this time)</li>
               <li>• Figuring out what to do in life</li>

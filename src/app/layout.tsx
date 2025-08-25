@@ -24,6 +24,8 @@ export default function RootLayout({
           <nav className="max-w-3xl mx-auto text-sm text-gray-700">
             <Link href="/" className="hover:underline">home</Link>
             <span className="px-2">/</span>
+            <Link href="/projects" className="hover:underline">projects</Link>
+            <span className="px-2">/</span>
             <Link href="/blog" className="hover:underline">blog</Link>
           </nav>
         </header>
