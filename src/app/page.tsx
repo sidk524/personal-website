@@ -84,10 +84,10 @@ export default function Home() {
           <section>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
-              <li>• Studying some calculus and physics</li>
-              <li>• Reading</li>
+              <li>• Doing WPT SBSP research</li>
+              <li>• Doing reinforcement learning research on LLM's</li>
               <li>• Cutting in the gym (fr this time)</li>
-              <li>• Figuring out what to do in life</li>
+              <li>• Reading</li>
             </ul>
           </section>
         </div>
