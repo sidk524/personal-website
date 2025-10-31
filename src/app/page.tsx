@@ -85,7 +85,7 @@ export default function Home() {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
               <li>• Doing WPT SBSP research</li>
-              <li>• Doing reinforcement learning research on LLM's</li>
+              <li>• Doing reinforcement learning research on LLMs</li>
               <li>• Cutting in the gym (fr this time)</li>
               <li>• Reading</li>
             </ul>
