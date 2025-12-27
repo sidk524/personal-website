@@ -19,7 +19,7 @@ export default function Home() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">About</h2>
             <div className="space-y-3 text-gray-700 leading-relaxed text-sm">
               <p>
-                Hey, I&#39;m Siddharth, a 19-year-old studying Computer Science at Imperial College London. 
+                Hey, I&#39;m Siddharth, a 20-year-old studying Computer Science at Imperial College London. 
                 I love building things and learning as much as I possibly can - especially across disciplines. 
                 Right now, I&#39;m focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
               </p>
@@ -66,17 +66,17 @@ export default function Home() {
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
                 <Image 
-                  src="/dune.jpg" 
-                  alt="Dune" 
+                  src="/Homo Deus.jpg" 
+                  alt="Homo Deus" 
                   width={40}
                   height={60}
                   className="rounded object-cover"
                 />
               </div>
               <div>
-                <h4 className="font-medium text-gray-900 text-sm">Dune</h4>
-                <p className="text-xs text-gray-600 mb-1">by Frank Herbert</p>
-                <p className="text-xs text-gray-500">Epic science fiction about power, ecology, and fate.</p>
+                <h4 className="font-medium text-gray-900 text-sm">Homo Deus</h4>
+                <p className="text-xs text-gray-600 mb-1">by Yuval Noah Harari</p>
+                <p className="text-xs text-gray-500">A brief history of tomorrow exploring humanity's future.</p>
               </div>
             </div>
           </section>
@@ -84,10 +84,10 @@ export default function Home() {
           <section>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
-              <li>• Doing WPT SBSP research</li>
+              <li>• Doing GPS denied drone swarm research to map low visibility environments</li>
               <li>• Doing reinforcement learning research on LLMs</li>
               <li>• Cutting in the gym (fr this time)</li>
-              <li>• Reading</li>
+              <li>• Reading Homo Deus</li>
             </ul>
           </section>
         </div>

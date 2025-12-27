@@ -27,6 +27,8 @@ export default function RootLayout({
             <Link href="/projects" className="hover:underline">projects</Link>
             <span className="px-2">/</span>
             <Link href="/blog" className="hover:underline">blog</Link>
+            <span className="px-2">/</span>
+            <Link href="/books" className="hover:underline">books</Link>
           </nav>
         </header>
         <main className="max-w-3xl mx-auto px-4">
