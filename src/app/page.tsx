@@ -76,7 +76,7 @@ export default function Home() {
               <div>
                 <h4 className="font-medium text-gray-900 text-sm">Homo Deus</h4>
                 <p className="text-xs text-gray-600 mb-1">by Yuval Noah Harari</p>
-                <p className="text-xs text-gray-500">A brief history of tomorrow exploring humanity's future.</p>
+                <p className="text-xs text-gray-500">A brief history of tomorrow exploring humanity&apos;s future.</p>
               </div>
             </div>
           </section>

@@ -1,7 +1,7 @@
 export default function Books() {
   return (
     <div className="py-8">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Books I've Read recently</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 mb-6">Books I&apos;ve Read recently</h1>
       <ul className="space-y-3 text-gray-700 text-sm">
         <li>
           <span className="font-medium text-gray-900">Steve Jobs</span> by Walter Isaacson
@@ -33,7 +33,7 @@ export default function Books() {
         </li>
         <li>
           <span className="font-medium text-gray-900">Homo Deus</span> by Yuval Noah Harari
-          <p className="text-gray-600 text-xs mt-1">A brief history of tomorrow exploring humanity's future.</p>
+          <p className="text-gray-600 text-xs mt-1">A brief history of tomorrow exploring humanity&apos;s future.</p>
         </li>
       </ul>
     </div>
