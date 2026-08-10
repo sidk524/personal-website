@@ -25,7 +25,7 @@ export default function Home() {
               </p>
               <p>
                 I also spend time exploring subjects like politics, history, and philosophy - anything that helps me develop my worldview and understand life. 
-                I don&#39;t really know where I&#39;m headed yet, but right now I have a strong interest in (aerial) robotics, and I&apos;m pursuing that by interning the Aerial Robotics Lab at Imperial. 
+                I don&#39;t really know where I&#39;m headed yet, but right now I have a strong interest in (aerial) robotics, and I&apos;m pursuing that by interning at the Aerial Robotics Lab at Imperial. 
                 I also love doing deep dives into politics, history and philosophy whenever I get the time!
               </p>
             </div>
