@@ -21,12 +21,12 @@ export default function Home() {
               <p>
                 Hey, I&#39;m Siddharth, a 20-year-old studying Computer Science at Imperial College London. 
                 I love building things and learning as much as I possibly can - especially across disciplines. 
-                Right now, I&#39;m focused on developing a deep, interdisciplinary understanding of engineering, physics, and just life in general.
+                Right now, I&#39;m focused on developing a deep, interdisciplinary understanding of engineering, science and just life in general.
               </p>
               <p>
                 I also spend time exploring subjects like politics, history, and philosophy - anything that helps me develop my worldview and understand life. 
-                I don&#39;t really know where I&#39;m headed yet, but I know that trying to reach my potential is non-negotiable if I want to be fulfilled in life. 
-                So that&#39;s what I&#39;m doing: learning, building, reflecting, and trying to become a better human.
+                I don&#39;t really know where I&#39;m headed yet, but right now I have a strong interest in (aerial) robotics, and I'm pursuing that by interning the Aerial Robotics Lab at Imperial. 
+                I also love doing deep dives into politics, history and philosophy whenever I get the time!
               </p>
             </div>
           </section>
@@ -65,18 +65,18 @@ export default function Home() {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently Reading</h3>
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
-                <Image 
-                  src="/Homo Deus.jpg" 
-                  alt="Homo Deus" 
+                <Image
+                  src="/daemon.jpg"
+                  alt="Daemon"
                   width={40}
                   height={60}
                   className="rounded object-cover"
                 />
               </div>
               <div>
-                <h4 className="font-medium text-gray-900 text-sm">Homo Deus</h4>
-                <p className="text-xs text-gray-600 mb-1">by Yuval Noah Harari</p>
-                <p className="text-xs text-gray-500">A brief history of tomorrow exploring humanity&apos;s future.</p>
+                <h4 className="font-medium text-gray-900 text-sm">Daemon</h4>
+                <p className="text-xs text-gray-600 mb-1">by Daniel Suarez</p>
+                <p className="text-xs text-gray-500">A techno-thriller where a dead genius&apos;s program begins reshaping the world.</p>
               </div>
             </div>
           </section>
@@ -84,10 +84,9 @@ export default function Home() {
           <section>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Currently</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
-              <li>• Doing GPS denied drone swarm research to map low visibility environments</li>
-              <li>• Doing reinforcement learning research on LLMs</li>
-              <li>• Cutting in the gym (fr this time)</li>
-              <li>• Reading Homo Deus</li>
+              <li>• Interning in the Aerial Robotics Lab at Imperial</li>
+              <li>• Doing GPS denied navigation and obstacle avoidance for returning to base</li>
+              <li>• Getting into running again</li>
             </ul>
           </section>
         </div>

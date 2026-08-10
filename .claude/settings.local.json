@@ -7,7 +7,13 @@
       "Bash(npm cache clean:*)",
       "Bash(npm install:*)",
       "Bash(npm uninstall:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(file public/project-videos/VID*.mp4)",
+      "Bash(python3 *)",
+      "Bash(pip install *)",
+      "Bash(/tmp/claude-1000/-home-sidk524-Documents-personal-projects-personal-website/bf195565-3d7a-4468-abe5-e5bd149d1cc8/scratchpad/pkgs/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -y -v error -i VID20260614174312.mp4 -vf scale=w=1280:h=1280:force_original_aspect_ratio=decrease:force_divisible_by=2 -c:v libx264 -crf 26 -preset medium -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart drone-test-flight.mp4)",
+      "Bash(/tmp/claude-1000/-home-sidk524-Documents-personal-projects-personal-website/bf195565-3d7a-4468-abe5-e5bd149d1cc8/scratchpad/pkgs/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -y -v error -i VID20260710025549.mp4 -vf scale=w=1280:h=1280:force_original_aspect_ratio=decrease:force_divisible_by=2 -c:v libx264 -crf 26 -preset medium -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart drone-flight-2.mp4)",
+      "Bash(npx tsc *)"
     ],
     "deny": []
   }
