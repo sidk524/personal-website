@@ -7,13 +7,19 @@ interface Project {
   description: string;
   link?: string;
   videos?: string[];
+  images?: string[];
 }
 
 const experience: Project[] = [
   {
     id: 'experience-1',
     name: 'Aerial Robotics Lab, Imperial College London (June 2026 - Present)',
-    description: 'I\'m currently an undergraduate researcher (UROP) working on an under-canopy insect-monitoring drone that will operate in the Amazon rainforest - a platform that has to fly above and below forest canopy, identify a viable landing site on its own, land, and collect insect-related data. My slice of the project is the autonomy problem at the heart of it: GPS denied navigation and landing site identification, since under a canopy there\'s no reliable GPS and the drone has to find a suitable place to land. Working with C++, ROS2, PX4, Gazebo. The usual stuff'
+    description: 'I\'m currently an undergraduate researcher (UROP) working on an under-canopy insect-monitoring drone that will operate in the Amazon rainforest - a platform that has to fly above and below forest canopy, identify a viable landing site on its own, land, and collect insect-related data. My slice of the project is the autonomy problem at the heart of it: GPS denied navigation and landing site identification, since under a canopy there\'s no reliable GPS and the drone has to find a suitable place to land. Working with C++, ROS2, PX4, Gazebo. The usual stuff.',
+    images: ['/project-images/drone-arl.jpg'],
+    videos: [
+      '/project-videos/drone-arl-1.mp4',
+      '/project-videos/drone-arl-2.mp4'
+    ]
   }
 ];
 
@@ -21,8 +27,9 @@ const projects: Project[] = [
   {
     id: 'project-1',
     name: 'GPS Denied Navigation and Obstacle Avoidance on a Drone (In Progress)',
-    description: 'I\'m really interested in aerial robotics, it\'s one of the pieces to the puzzle in long term automation for humanity. So I thought I\'d do this project to learn more about different autonomy algorithms for drones. I\'m building a GPS denied drone that navigates entirely by what it sees: it builds a live 3D map of its surroundings using an RGB-D camera and visual SLAM (RTAB-Map fused with PX4), avoids obstacles as it explores, and can find its own way back to base and precision land back at home base, all without ever knowing its GPS coordinates. The core algorithm works in simulation right now, and I\'ve built the physical drone and done a test flight with it. If my Nvidia Jetson ever decides to arrive (4 weeks and counting) then I\'ll test the final autonomy algorithm on the real drone! Here\'s some pictures and videos.',
+    description: 'I\'m really interested in aerial robotics, it\'s one of the pieces to the puzzle in long term automation for humanity. So I thought I\'d do this project to learn more about different autonomy algorithms for drones. I\'m building a GPS denied drone that navigates entirely by what it sees: it builds a live 3D map of its surroundings using an RGB-D camera and visual SLAM (RTAB-Map fused with PX4), avoids obstacles as it explores, and can find its own way back to base and precision land back at home base, all without ever knowing its GPS coordinates. The core algorithm works in simulation, and I\'ve built the physical drone and got precision landing working in real life. Right now I\'m closing the sim to real gap for obstacle avoidance, which is turning out to be a lot harder than the sim made it look. Here\'s some videos.',
     videos: [
+      '/project-videos/drone-precision-landing.mp4',
       '/project-videos/drone-test-flight.mp4',
       '/project-videos/VID-20260620-WA0007.mp4',
       '/project-videos/drone-flight-2.mp4'
@@ -88,9 +95,15 @@ export default function Projects() {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {project.description}
                 </p>
-                {project.videos && (
+                {(project.images || project.videos) && (
                   <div className="mt-3 flex flex-wrap items-start gap-3">
-                    {project.videos.map((video) => (
+                    {project.images?.map((image) => (
+                      <a key={image} href={image} target="_blank" rel="noopener noreferrer">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={image} alt={project.name} className="h-64 rounded" loading="lazy" />
+                      </a>
+                    ))}
+                    {project.videos?.map((video) => (
                       <div key={video} className="relative">
                         <video
                           src={video}

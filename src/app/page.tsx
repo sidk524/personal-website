@@ -66,17 +66,17 @@ export default function Home() {
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
                 <Image
-                  src="/daemon.jpg"
-                  alt="Daemon"
+                  src="/abundance.jpg"
+                  alt="Abundance"
                   width={40}
                   height={60}
                   className="rounded object-cover"
                 />
               </div>
               <div>
-                <h4 className="font-medium text-gray-900 text-sm">Daemon</h4>
-                <p className="text-xs text-gray-600 mb-1">by Daniel Suarez</p>
-                <p className="text-xs text-gray-500">A techno-thriller where a dead genius&apos;s program begins reshaping the world.</p>
+                <h4 className="font-medium text-gray-900 text-sm">Abundance</h4>
+                <p className="text-xs text-gray-600 mb-1">by Ezra Klein and Derek Thompson</p>
+                <p className="text-xs text-gray-500">An argument for a politics that builds more of what we need, from housing to clean energy.</p>
               </div>
             </div>
           </section>

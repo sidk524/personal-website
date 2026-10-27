@@ -4,6 +4,10 @@ export default function Books() {
       <h1 className="text-2xl font-semibold text-gray-900 mb-6">Books I&apos;ve Read recently</h1>
       <ul className="space-y-3 text-gray-700 text-sm">
         <li>
+          <span className="font-medium text-gray-900">Daemon</span> by Daniel Suarez
+          <p className="text-gray-600 text-xs mt-1">A techno-thriller where a dead genius&apos;s program begins reshaping the world.</p>
+        </li>
+        <li>
           <span className="font-medium text-gray-900">Steve Jobs</span> by Walter Isaacson
           <p className="text-gray-600 text-xs mt-1">The definitive biography of the Apple co-founder, chronicling his life, career, and impact on technology.</p>
         </li>
