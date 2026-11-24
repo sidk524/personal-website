@@ -44,6 +44,9 @@ function overrideDateIfNeeded(filename: string, fallbackIso: string): string {
   if (lower === 'why i left my startup to return to college.docx') {
     return new Date('2025-08-09T00:00:00Z').toISOString();
   }
+  if (lower === 'some thoughts on defence tech.docx') {
+    return new Date('2026-11-24T00:00:00Z').toISOString();
+  }
   return fallbackIso;
 }
 
