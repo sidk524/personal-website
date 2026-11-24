@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { listDocxPosts } from '@/lib/docx';
-
-export const revalidate = 3600;
+import { listPosts } from '@/lib/posts';
 
 export default async function Blog() {
-  const posts = await listDocxPosts();
+  const posts = await listPosts();
   return (
     <div className="py-8">
       <h1 className="text-2xl font-semibold text-gray-900 mb-6">Blog</h1>

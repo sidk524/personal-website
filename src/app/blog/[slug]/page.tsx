@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { allSlugs, loadDocxPost } from '@/lib/docx';
+import { allSlugs, loadPost } from '@/lib/posts';
 
-export const revalidate = 3600;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = await allSlugs();
@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await loadDocxPost(slug);
+  const post = await loadPost(slug);
 
   if (!post) {
     notFound();
@@ -29,9 +29,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {post.readTime ? <span className="ml-2">{post.readTime}</span> : null}
         </div>
       </header>
-      <article className="prose prose-gray max-w-none">
-        <div className="blog-content docx-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-      </article>
+      <article className="blog-content" dangerouslySetInnerHTML={{ __html: post.html }} />
     </div>
   );
 }

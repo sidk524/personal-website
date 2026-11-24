@@ -2,115 +2,134 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DOCX content formatting */
-.docx-content {
+/* Blog post (markdown) formatting */
+.blog-content {
   /* Preserve natural spacing without breaking layout */
   white-space: normal;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-.docx-content p {
-  margin-bottom: 1rem;
+.blog-content p {
+  margin-bottom: 1.4rem;
   margin-top: 0;
 }
 
-.docx-content p:empty {
+.blog-content p:empty {
   margin-bottom: 1rem;
   min-height: 1.2em;
 }
 
-.docx-content strong {
+.blog-content strong {
   font-weight: 600;
 }
 
-.docx-content em {
+.blog-content em {
   font-style: italic;
 }
 
-.docx-content u {
+.blog-content u {
   text-decoration: underline;
 }
 
-.docx-content blockquote {
-  border-left: 4px solid #e5e7eb;
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  font-style: italic;
+/* Used for notes/updates: `> **Note:** ...` */
+.blog-content blockquote {
+  border-left: 1px solid #9ca3af;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin: 1.5rem 0 2.25rem;
   color: #6b7280;
 }
 
-.docx-content img {
-  /* Let images use their explicit width/height from Word document */
-  /* Remove max-width to preserve original dimensions */
-  margin: 1.5rem 0;
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-content a {
+  text-decoration: underline;
+}
+
+.blog-content img {
+  display: block;
+  margin: 1.5rem auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.docx-content h1,
-.docx-content h2,
-.docx-content h3,
-.docx-content h4,
-.docx-content h5,
-.docx-content h6 {
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 600;
   line-height: 1.3;
 }
 
-.docx-content h1 {
+.blog-content h1 {
   font-size: 2.25rem;
   border-bottom: 2px solid #e5e7eb;
   padding-bottom: 0.5rem;
 }
 
-.docx-content h2 {
-  font-size: 1.875rem;
+.blog-content h2 {
+  font-size: 1.3rem;
+  margin-top: 3rem;
 }
 
-.docx-content h3 {
+.blog-content h3 {
   font-size: 1.5rem;
 }
 
-.docx-content h4 {
+.blog-content h4 {
   font-size: 1.25rem;
 }
 
-.docx-content h5 {
+.blog-content h5 {
   font-size: 1.125rem;
 }
 
-.docx-content h6 {
+.blog-content h6 {
   font-size: 1rem;
 }
 
-/* Lists from Word */
-.docx-content ul,
-.docx-content ol {
-  margin: 1rem 0;
+.blog-content ul,
+.blog-content ol {
+  margin: 1.4rem 0;
   padding-left: 1.5rem;
 }
 
-.docx-content li {
+.blog-content ul {
+  list-style: disc;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content li {
   margin-bottom: 0.5rem;
 }
 
-/* Tables from Word */
-.docx-content table {
+.blog-content table {
   width: 100%;
   margin: 1.5rem 0;
   border-collapse: collapse;
 }
 
-.docx-content th,
-.docx-content td {
+.blog-content th,
+.blog-content td {
   border: 1px solid #e5e7eb;
   padding: 0.75rem;
   text-align: left;
 }
 
-.docx-content th {
+.blog-content th {
   background-color: #f9fafb;
   font-weight: 600;
 }
